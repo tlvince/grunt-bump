@@ -1,6 +1,6 @@
 {
-  "name": "grunt-bump",
-  "description": "Bump package version",
+  "name": "grunt-bump-android",
+  "description": "Bump Android package version",
   "version": "0.0.14",
   "homepage": "https://github.com/vojtajina/grunt-bump",
   "author": {
