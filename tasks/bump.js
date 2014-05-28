@@ -71,7 +71,7 @@ module.exports = function(grunt) {
 
     var globalVersion; // when bumping multiple files
     var gitVersion;    // when bumping using `git describe`
-    var VERSION_REGEXP = /([\'|\"]?version[\'|\"]?[ ]*:[ ]*[\'|\"]?)([\d||A-a|.|-]*)([\'|\"]?)/i;
+    var VERSION_REGEXP = /([\'|\"]?versionCode[\'|\"]?[ ]*:[ ])(\d)(.*)/i;
 
 
     // GET VERSION FROM GIT
@@ -92,7 +92,7 @@ module.exports = function(grunt) {
         var version = null;
         var content = grunt.file.read(file).replace(VERSION_REGEXP, function(match, prefix, parsedVersion, suffix) {
           gitVersion = gitVersion && parsedVersion + '-' + gitVersion;
-          version = exactVersionToSet || gitVersion || semver.inc(parsedVersion, versionType || 'patch');
+          version = exactVersionToSet || gitVersion || semver.inc(parsedVersion, versionType || 'patch') || parseInt(parsedVersion) + 1;
           return prefix + version + suffix;
         });
 
