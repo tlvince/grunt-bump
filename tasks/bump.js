@@ -1,11 +1,11 @@
 /*
- * Increase version number
+ * Increase Android version number
  *
- * grunt bump
- * grunt bump:git
- * grunt bump:patch
- * grunt bump:minor
- * grunt bump:major
+ * grunt bumpAndroid
+ * grunt bumpAndroid:git
+ * grunt bumpAndroid:patch
+ * grunt bumpAndroid:minor
+ * grunt bumpAndroid:major
  *
  * @author Vojta Jina <vojta.jina@gmail.com>
  * @author Mathias Paumgarten <mail@mathias-paumgarten.com>
@@ -20,7 +20,7 @@ var exec = require('child_process').exec;
 module.exports = function(grunt) {
 
   var DESC = 'Increment the version, commit, tag and push.';
-  grunt.registerTask('bump', DESC, function(versionType, incOrCommitOnly) {
+  grunt.registerTask('bumpAndroid', DESC, function(versionType, incOrCommitOnly) {
     var opts = this.options({
       bumpVersion: true,
       files: ['package.json'],
@@ -185,10 +185,10 @@ module.exports = function(grunt) {
 
   // ALIASES
   DESC = 'Increment the version only.';
-  grunt.registerTask('bump-only', DESC, function(versionType) {
-    grunt.task.run('bump:' + (versionType || '') + ':bump-only');
+  grunt.registerTask('bump-onlyAndroid', DESC, function(versionType) {
+    grunt.task.run('bumpAndroid:' + (versionType || '') + ':bump-only');
   });
 
   DESC = 'Commit, tag, push without incrementing the version.';
-  grunt.registerTask('bump-commit', DESC, 'bump::commit-only');
+  grunt.registerTask('bump-commitAndroid', DESC, 'bumpAndroid::commit-only');
 };
